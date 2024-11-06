@@ -6,8 +6,12 @@ import { MdDarkMode } from "react-icons/md";
 import axios from "axios";
 import { toast } from 'react-hot-toast';
 
+type NavbarProps = {
+    children?: React.ReactNode;
+  };
 
-export const Navbar = () => {
+  
+export const Navbar:React.FC<NavbarProps> = () => {
 
     const [show, setShow] = useState(false);
 
@@ -18,6 +22,7 @@ export const Navbar = () => {
     const navigateTo = useNavigate();
     const propDrill = useContext(Context);
 
+    
 
     const handlelogout = async(e:any)=>{
 
@@ -26,6 +31,7 @@ export const Navbar = () => {
             await axios.get("http://localhost:4000/api/v1/user/logout");
             propDrill?.setIsAuthenticated(false);
             toast.success("Succesfully logout")
+            localStorage.setItem('token' , "");
             navigateTo("/")
         } catch (error){
             toast.error("error while log out");
@@ -33,7 +39,7 @@ export const Navbar = () => {
         }
     }
     return (
-        <section className={location.pathname === '/dashboard' ? "hideNavbar" : propDrill?.mode === 'light' ? "header light-navbar" : "header dark-navbar"}>
+        <section className={location.pathname === "/dashboard" ? "hideNavbar" : propDrill?.mode === 'light' ? "header light-navbar" : "header dark-navbar"}>
 
             <nav>
                 <div className="logo">
@@ -80,7 +86,7 @@ export const Navbar = () => {
                             ""
                         )}
 
-                        {!propDrill?.isAuthenticated ? (
+                        {!propDrill?.isAuthenticated && localStorage.getItem('token')=="" ? (
                             <Link to={"/login"} onClick={handleNavbar} className="login-btn">LOGIN</Link>
                         ) : (
                             <div>

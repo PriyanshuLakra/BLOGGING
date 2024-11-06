@@ -1,14 +1,8 @@
 
 
-
-
-export const Dashboard = ()=>{
-
-
+export const LatestBlogs = () =>{
 
     return <div>
         
     </div>
-
-
 }

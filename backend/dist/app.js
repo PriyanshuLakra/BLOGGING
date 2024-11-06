@@ -2,7 +2,6 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const dotenv_1 = __importDefault(require("dotenv"));
@@ -15,11 +14,12 @@ const userRouter_1 = __importDefault(require("./router/userRouter"));
 const blogRouter_1 = __importDefault(require("./router/blogRouter"));
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
-app.use((0, cors_1.default)({
-    origin: [(_a = process.env.FRONTEND_URL) !== null && _a !== void 0 ? _a : ""],
-    methods: ["GET", "PUT", "DELETE", "POST"],
-    credentials: true
-}));
+// app.use(cors({
+//     origin:[process.env.FRONTEND_URL ?? ""],
+//     methods:["GET" , "PUT" , "DELETE" , "POST"],
+//     credentials:true
+// }))
+app.use((0, cors_1.default)());
 app.use((0, cookie_parser_1.default)());
 dotenv_1.default.config({ path: './config/config.env' });
 app.use(express_1.default.urlencoded({ extended: true }));

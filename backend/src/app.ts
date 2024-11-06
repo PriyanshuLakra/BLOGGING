@@ -15,11 +15,13 @@ const app = express();
 app.use(express.json());
 
 
-app.use(cors({
-    origin:[process.env.FRONTEND_URL ?? ""],
-    methods:["GET" , "PUT" , "DELETE" , "POST"],
-    credentials:true
-}))
+// app.use(cors({
+//     origin:[process.env.FRONTEND_URL ?? ""],
+//     methods:["GET" , "PUT" , "DELETE" , "POST"],
+//     credentials:true
+// }))
+
+app.use(cors());
 
 
 app.use(cookieParser())
