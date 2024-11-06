@@ -4,14 +4,17 @@ import App from './App.tsx'
 import './index.css'
 
 
+interface User{
+  role:string,
+}
 
 
 type contexttype = {
 
   isAuthenticated:boolean,
   setIsAuthenticated:(value:boolean)=>void,
-  user:object,
-  setUser:(user:object)=>void,
+  user:User,
+  setUser:(user:User)=>void,
   blog:object[],
   setBlog:(blog:object[])=>void,
   mode:string,
@@ -28,7 +31,7 @@ const AppWrapper = () =>{
 
   const [isAuthenticated , setIsAuthenticated] = useState(false);
 
-  const [user , setUser] = useState({});
+  const [user , setUser] = useState<User>({role:""});
 
   const [blog , setBlog] = useState<object[]>([]);
 

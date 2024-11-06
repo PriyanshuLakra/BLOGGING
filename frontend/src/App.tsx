@@ -1,8 +1,9 @@
 
-
+import "./App.css";
 
 import {BrowserRouter, Route,  Routes} from "react-router-dom"
-import { Home } from "./components/pages/Home"
+
+import { Dashboard } from "./components/pages/Dashboard"
 
 function App() {
 
@@ -11,7 +12,8 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home></Home>}></Route>
+          <Route path="/" element={<Dashboard></Dashboard>}></Route>
+
         </Routes>
       </BrowserRouter>
     </>
