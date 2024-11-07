@@ -12,6 +12,9 @@ import { Home } from "./components/pages/Home";
 import { Dashboard } from "./components/pages/Dashboard";
 import { Footer } from "./components/layouts/footer";
 import { Login } from "./components/pages/login";
+import { Register } from "./components/pages/Register";
+import { Authors } from "./components/pages/Authors";
+import { SingleBlog } from "./components/pages/SingleBlog";
 
 
 
@@ -51,6 +54,9 @@ return (
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/dashboard" element={<Dashboard></Dashboard>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
+        <Route path="/Register" element={<Register></Register>}></Route>
+        <Route path="/authors" element={<Authors></Authors>}></Route>
+        <Route path="/blog/:id" element={<SingleBlog />} />
       </Routes>
       <Footer></Footer>
 

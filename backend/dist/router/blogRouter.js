@@ -10,7 +10,7 @@ const router = express_1.default.Router();
 router.post("/blogPost", auth_1.isAuthenticated, (0, auth_1.isAuthorised)("AUTHOR"), blogController_1.blogPost);
 router.delete("/deleteBlog/:id", auth_1.isAuthenticated, (0, auth_1.isAuthorised)("AUTHOR"), blogController_1.deleteBlog);
 router.get("/getAllblogs", blogController_1.getAllblogs);
-router.get("/getBlog/:id", auth_1.isAuthenticated, blogController_1.getBlog);
+router.get("/getBlog/:id", blogController_1.getBlog);
 router.get("/getmyBogs", auth_1.isAuthenticated, (0, auth_1.isAuthorised)("AUTHOR"), blogController_1.Myblogs);
 router.post("/updateBlog/:id", auth_1.isAuthenticated, (0, auth_1.isAuthorised)("AUTHOR"), blogController_1.updateBlog);
 exports.default = router;

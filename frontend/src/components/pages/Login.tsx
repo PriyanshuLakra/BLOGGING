@@ -27,15 +27,13 @@ export const Login = () => {
 
         e.preventDefault();
         await axios.post("http://localhost:4000/api/v1/user/login", { phone, email, password, role })
-            .then((res) => {
+            .then( async (res) => {
+                const {data}= await axios.get("http://localhost:4000/api/v1/user/getMyprofile");
+                propDrill?.setUser(data.user);
                 localStorage.setItem('token' , res.data.token);
-                toast.success(res.data.message);
-                setEmail("");
-                setPassword("");
-                setRole("");
-                setphone("");
-                navigateTo("/");
                 propDrill?.setIsAuthenticated(true);
+                toast.success(res.data.message);
+                navigateTo("/");
             })
             .catch((error)=>{
                 toast.error(error.response.data.message);

@@ -3,13 +3,17 @@ import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
 
+interface Image{
+  url:string,
+  public_id:string
+}
 
-interface User{
-        id: Number,
+interface User{ 
+        id: number,
         name: String,
         phone:String,
         email:String,
-        avatar: String,
+        avatar: Image,
         education: String,
         role: String,
         password:String,
@@ -74,7 +78,7 @@ const AppWrapper = () =>{
   const currDate: Date = new Date();
   const [isAuthenticated , setIsAuthenticated] = useState(false);
 
-  const [user , setUser] = useState<User>({id:-1 , name:"" , phone:"" , email:"",avatar:"" , education:"" ,role:"",password:"" ,createdOn:currDate});
+  const [user , setUser] = useState<User>({id:-1 , name:"" , phone:"" , email:"",avatar:{url:"",public_id:""} , education:"" ,role:"",password:"" ,createdOn:currDate});
 
   // const [blog , setBlog] = useState<Blog | null>(null);
   const [blog, setBlog] = useState<Blog[]>([])

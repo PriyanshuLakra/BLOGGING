@@ -22,7 +22,7 @@ export const Navbar:React.FC<NavbarProps> = () => {
     const navigateTo = useNavigate();
     const propDrill = useContext(Context);
 
-    
+    console.log(propDrill?.user.role)
 
     const handlelogout = async(e:any)=>{
 
@@ -74,7 +74,7 @@ export const Navbar:React.FC<NavbarProps> = () => {
                                 <MdDarkMode className="dark-icon" />
                             )}
                         </button>
-                        {propDrill?.isAuthenticated && propDrill?.user.role === "Author" ? (
+                        {localStorage.getItem("token") && !propDrill?.isAuthenticated && propDrill?.user.role !== "AUTHOR" ? (
                             <Link
                             to={"/dashboard"}
                             onClick={handleNavbar}
@@ -86,7 +86,7 @@ export const Navbar:React.FC<NavbarProps> = () => {
                             ""
                         )}
 
-                        {!propDrill?.isAuthenticated && localStorage.getItem('token')=="" ? (
+                        {!propDrill?.isAuthenticated && !localStorage.getItem('token') ? (
                             <Link to={"/login"} onClick={handleNavbar} className="login-btn">LOGIN</Link>
                         ) : (
                             <div>
@@ -96,18 +96,8 @@ export const Navbar:React.FC<NavbarProps> = () => {
                     </div>
                 </div>
             </nav>
-
-
-
         </section>
     )
-
-
-
-
-
-
-
 
 
 
